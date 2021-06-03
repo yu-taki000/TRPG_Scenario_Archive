@@ -26,7 +26,7 @@ TRPG自体が活発になればいいと思う。
 
 ## とりあえずユースケース
 
-![useCase](/out/ideas/umn/useCase/useCase.png)
+![useCase](/out/ideas/uml/useCase/useCase.png)
 
 
 

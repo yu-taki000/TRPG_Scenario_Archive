@@ -1,0 +1,26 @@
+@startuml
+title ざっくりの流れ
+
+left to right direction
+
+actor Player as pl
+actor SenarioWriter as SW
+
+package TRPG_Scenario_Archive {
+    usecase シナリオ保管庫 as storage
+    usecase インセンティブプール as pool
+}
+
+'人の動き
+SW --> storage : シナリオ投稿
+SW <-- pool :インセンティブ
+
+'システムからの流れ
+storage --> pl : DL
+pool <-- pl :会費?
+
+usecase その他 as other #palegreen
+other --> pool:サイトの広告とか？
+
+
+@enduml

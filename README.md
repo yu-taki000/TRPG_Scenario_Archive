@@ -31,7 +31,7 @@ TRPG自体が活発になればいいと思う。
 
 
 ## 構成図作成(仮)
-![archi](/out/images/archi/architecture.png)
+![archi](/out/archi/architecture.png)
 
 ## 現状の説明(筆者の認識):文章迷子中
 

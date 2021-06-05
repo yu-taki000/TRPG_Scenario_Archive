@@ -28,10 +28,19 @@ TRPG自体が活発になればいいと思う。
 
 ![useCase](/out/ideas/uml/useCase/useCase.png)
 
-
-
 ## 構成図作成(仮)
 ![archi](/out/archi/architecture.png)
+
+## 最初に実装しようと思っていること
+
+- twitter認証でのログイン機能
+- TRPGシステム単位のシナリオ投稿機能
+  - 投稿時に必要な情報 
+    - ユーザ情報(twitter)
+    - 事前情報(テキスト+画像[]α)
+    - シナリオ本体(zip)
+- シナリオのDL機能
+  - ユーザ
 
 ## 現状の説明(筆者の認識):文章迷子中
 

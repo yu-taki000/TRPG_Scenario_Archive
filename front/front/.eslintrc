@@ -10,7 +10,9 @@
     "eslint:recommended",
     "@vue/typescript/recommended",
     "@vue/prettier",
-    "@vue/prettier/@typescript-eslint"
+    "@vue/prettier/@typescript-eslint",
+    "airbnb",
+    "airbnb/hooks"
   ],
   "parserOptions": {
     "ecmaVersion": 2021

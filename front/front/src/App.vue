@@ -1,18 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <img
+    alt="Vue logo"
+    src="./assets/logo.png"
+  >
+  <div id="nav">
+    <router-link to="/">
+      Home
+    </router-link> |
+    <router-link to="/hello">
+      About
+    </router-link> |
+    <router-link to="/login">
+      login
+    </router-link> <!-- 追加 -->
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent } from 'vue';
+import HelloWorld from './components/HelloWorld.vue';
 
-  export default defineComponent({
-    name: 'App',
-    components: {
-      HelloWorld,
-    },
-  })
+export default defineComponent({
+  name: 'App',
+  components: {
+    HelloWorld,
+  },
+});
 </script>
 
 <style>

@@ -4,9 +4,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "eslint": "eslint --ext .ts,vue --ignore-path .gitignore .",
-    "prettier": "prettier -w -u .",
-    "lint": "npm run eslint --fix & npm run prettier"
+    "eslint": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "vue": "^3.0.5",
@@ -20,9 +18,10 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.10.0",
-    "prettier": "^2.3.1",
     "typescript": "^4.3.2",
     "vite": "^2.3.5",
     "vue-tsc": "^0.0.24"

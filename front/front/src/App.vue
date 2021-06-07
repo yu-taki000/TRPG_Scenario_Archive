@@ -5,13 +5,13 @@
   >
   <div id="nav">
     <router-link to="/">
-      Home
+      投稿
     </router-link> |
     <router-link to="/hello">
-      About
+      探す
     </router-link> |
     <router-link to="/login">
-      login
+      自分の情報
     </router-link> <!-- 追加 -->
     <router-view />
   </div>
@@ -19,12 +19,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
   },
 });
 </script>

@@ -32,7 +32,7 @@
         :show-upload-button="false"
         :show-cancel-button="false"
         :file-limit="1"
-        preview-width="200"
+        :preview-width="200"
         @upload="onUpload"
       >
         <template #empty>
@@ -51,7 +51,7 @@
         :show-upload-button="false"
         :show-cancel-button="false"
         :file-limit="1"
-        preview-width="200"
+        :preview-width="200"
         @upload="onUpload"
       >
         <template #empty>

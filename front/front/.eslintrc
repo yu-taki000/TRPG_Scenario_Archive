@@ -15,5 +15,10 @@
     "ecmaVersion": 2021
   },
   "plugins": [],
-  "rules": {}
+  "rules": {
+    "vue/attribute-hyphenation": [
+      "error",
+      "never"
+    ]
+  }
 }

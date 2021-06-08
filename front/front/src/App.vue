@@ -4,7 +4,7 @@
     src="./assets/logo.png"
   >
   <div id="nav">
-    <router-link to="/">
+    <router-link to="/upload">
       投稿
     </router-link> |
     <router-link to="/hello">

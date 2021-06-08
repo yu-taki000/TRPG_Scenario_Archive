@@ -7,6 +7,9 @@
     "eslint": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "primeflex": "^2.0.0",
+    "primeicons": "^4.1.0",
+    "primevue": "^3.3.5",
     "vue": "^3.0.5",
     "vue-router": "^4.0.8"
   },

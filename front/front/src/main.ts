@@ -6,6 +6,8 @@ import InputText from 'primevue/inputtext';
 import textArea from 'primevue/textarea';
 import FileUpload from 'primevue/fileupload';
 import Button from 'primevue/button';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 
 import 'primevue/resources/themes/saga-blue/theme.css'       //theme
 import 'primevue/resources/primevue.min.css'                 //core css
@@ -19,4 +21,6 @@ createApp(App)
   .component('textArea', textArea)
   .component('FileUpload', FileUpload)
   .component('Button', Button)
+  .component('DataTable', DataTable)
+  .component('Column', Column)
   .mount('#app');

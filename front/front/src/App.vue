@@ -7,7 +7,7 @@
     <router-link to="/upload">
       投稿
     </router-link> |
-    <router-link to="/hello">
+    <router-link to="/senario">
       探す
     </router-link> |
     <router-link to="/login">

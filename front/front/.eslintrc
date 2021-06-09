@@ -16,9 +16,18 @@
   },
   "plugins": [],
   "rules": {
-    "vue/attribute-hyphenation": [
+    "vue/max-attributes-per-line": [
       "error",
-      "never"
+      {
+        "singleline": {
+          "max": 10,
+          "allowFirstLine": true
+        },
+        "multiline": {
+          "max": 1,
+          "allowFirstLine": false
+        }
+      }
     ]
   }
 }

@@ -1,0 +1,5 @@
+{
+  "domain": "dev-vdufp57y.auth0.com",
+  "client_id": "DPh9ap2eOwXjXFeZgA21rKQwFhWNSCY3",
+  "redirect_uri": "http://localhost:3000/login"
+}

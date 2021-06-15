@@ -19,7 +19,7 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": [
+      "/@/*": [
         "src/*"
       ]
     }
@@ -30,4 +30,7 @@
     "src/**/*.tsx",
     "src/**/*.vue"
   ],
+  "exclude": [
+    "node_module"
+  ]
 }

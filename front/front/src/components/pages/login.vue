@@ -14,21 +14,21 @@
 
 <script lang="ts">
 import { inject, defineComponent } from 'vue';
+import * as authType from '/@/auth';
 
 export default defineComponent({
   name: 'Login',
   props: {
   },
   setup() {
-    const auth = inject<any>('$auth');
-
+    const auth = inject<authType.AuthPlugin>('$auth');
     return {
       auth,
       handleLogin: () => {
-        auth.loginWithRedirect();
+        auth?.loginWithRedirect();
       },
       handleLogout: () => {
-        auth.logout({
+        auth?.logout({
           returnTo: window.location.origin,
         });
       },

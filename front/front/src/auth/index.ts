@@ -68,13 +68,13 @@ export type AuthPlugin = {
   isAuthenticated: ComputedRef<boolean>;
   loading: ComputedRef<boolean>;
   user: ComputedRef<User | undefined>
-  getIdTokenClaims: (o: GetIdTokenClaimsOptions | undefined) => Promise<IdToken>,
-  getTokenSilently: (o: GetIdTokenClaimsOptions | undefined) => Promise<any>,
-  getTokenWithPopup: (o: GetIdTokenClaimsOptions | undefined) => Promise<string>,
+  getIdTokenClaims: (o?: GetIdTokenClaimsOptions) => Promise<IdToken>,
+  getTokenSilently: (o?: GetIdTokenClaimsOptions) => Promise<any>,
+  getTokenWithPopup: (o?: GetIdTokenClaimsOptions) => Promise<string>,
   handleRedirectCallback: () => Promise<void>,
-  loginWithRedirect: (o: RedirectLoginOptions | undefined) => Promise<void>,
+  loginWithRedirect: (o?: RedirectLoginOptions) => Promise<void>,
   loginWithPopup: () => Promise<void>,
-  logout: (o: LogoutOptions | undefined) => void,
+  logout: (o?: LogoutOptions) => void,
 }
 const authPlugin: AuthPlugin = {
   isAuthenticated: computed(() => state.isAuthenticated),

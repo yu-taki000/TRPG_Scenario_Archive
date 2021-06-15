@@ -1,9 +1,8 @@
 import * as vr from 'vue-router';
-import * as auth from '@/auth';
-import login from '@/components/pages/login.vue'
-import HelloWorld from '@/components/HelloWorld.vue'
-import senario from '@/components/pages/senario.vue'
-import Upload from '@/components/pages/upload.vue';
+import * as auth from '/@/auth';
+import login from '/@/components/pages/login.vue'
+import senario from '/@/components/pages/senario.vue'
+import Upload from '/@/components/pages/upload.vue';
 
 const Home = { template: '<div>Home</div>' };
 

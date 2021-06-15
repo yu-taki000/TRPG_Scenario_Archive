@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import * as router from '@/router/index';
+import * as router from '/@/router/index';
 // Auth Block
-import * as Auth0Plugin from '@/auth'
-import authConfig from '@/auth/auth_config.json'
+import * as Auth0Plugin from '/@/auth'
+import authConfig from '/@/auth/auth_config.json'
 
 // PrimeVue Block
 import PrimeVue from 'primevue/config';

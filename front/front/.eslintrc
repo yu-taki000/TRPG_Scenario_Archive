@@ -8,13 +8,16 @@
   "extends": [
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
-    "@vue/typescript/recommended",
-    "airbnb-base"
+    "@vue/typescript/recommended"
+    // "airbnb-base" vueファイル上でのimport時のエイリアス解釈に難あり
   ],
   "parserOptions": {
-    "ecmaVersion": 2021
+    "ecmaVersion": 2021,
+    "sourceType": "module"
   },
-  "plugins": [],
+  "plugins": [
+    "vue"
+  ],
   "rules": {
     "vue/max-attributes-per-line": [
       "error",

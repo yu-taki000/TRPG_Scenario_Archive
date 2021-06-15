@@ -1,8 +1,8 @@
 import createAuth0Client, {
-  Auth0Client, Auth0ClientOptions, GetIdTokenClaimsOptions, LogoutOptions, RedirectLoginOptions, User,
+  Auth0Client, Auth0ClientOptions, GetIdTokenClaimsOptions, IdToken, LogoutOptions, RedirectLoginOptions, User,
 } from '@auth0/auth0-spa-js';
 import {
-  App, computed, reactive, watchEffect
+  App, computed, ComputedRef, reactive, watchEffect
 } from 'vue';
 import { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
@@ -64,8 +64,19 @@ function getTokenWithPopup(o: GetIdTokenClaimsOptions | undefined) {
 function logout(o: LogoutOptions | undefined) {
   return client.logout(o);
 }
-
-const authPlugin = {
+export type AuthPlugin = {
+  isAuthenticated: ComputedRef<boolean>;
+  loading: ComputedRef<boolean>;
+  user: ComputedRef<User | undefined>
+  getIdTokenClaims: (o: GetIdTokenClaimsOptions | undefined) => Promise<IdToken>,
+  getTokenSilently: (o: GetIdTokenClaimsOptions | undefined) => Promise<any>,
+  getTokenWithPopup: (o: GetIdTokenClaimsOptions | undefined) => Promise<string>,
+  handleRedirectCallback: () => Promise<void>,
+  loginWithRedirect: (o: RedirectLoginOptions | undefined) => Promise<void>,
+  loginWithPopup: () => Promise<void>,
+  logout: (o: LogoutOptions | undefined) => void,
+}
+const authPlugin: AuthPlugin = {
   isAuthenticated: computed(() => state.isAuthenticated),
   loading: computed(() => state.loading),
   user: computed(() => state.user),

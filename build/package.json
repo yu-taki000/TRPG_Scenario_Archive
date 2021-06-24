@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@vue/cli": "^4.5.13",
-    "@vue/compiler-sfc": "^3.0.11"
+    "@vue/compiler-sfc": "^3.0.11",
+    "redoc-cli": "^0.12.1"
   }
 }

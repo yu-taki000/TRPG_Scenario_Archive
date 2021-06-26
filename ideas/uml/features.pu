@@ -1,0 +1,24 @@
+@startuml
+title サービスとしてのユースケース
+
+left to right direction
+
+actor user as user
+actor SenarioWriter as SW
+
+usecase Scenario_Archivestorage as service
+
+
+SW --> service : シナリオ投稿
+SW --> service : 過去に投稿した\nシナリオの閲覧
+SW --> service : シナリオの\n「良いね」の確認
+
+note "シナリオ名、\nシナリオライタ名で\n検索ができる"  as DlWay
+user --> DlWay :DL
+DlWay --> service
+
+user --> service :シナリオに感想の付与
+
+user --> SW : 「良いね」の送付\n(シナリオに対して)
+
+@enduml

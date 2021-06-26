@@ -1,0 +1,140 @@
+openapi: 3.0.0
+info:
+  title: Scenario Archive
+  description: Scenario Archiveで利用している、APIをまとめる.
+  version: 0.0.1
+servers:
+  - url: http://api.example.com/v1
+    description: 未完成なのでDummy
+security:
+  - BearerAuth: []
+  - ApiKeyAuth: []
+paths:
+  /scenario/list:
+    get:
+      summary: 全シナリオ情報を取得する
+      responses:
+        "200":
+          description: 成功時のレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/senarioList"
+
+  /scenario/{id}:
+    get:
+      summary: シナリオ情報画面で必要な情報を渡す
+      parameters:
+        - $ref: "#/components/parameters/senarioId"
+      responses:
+        "200":
+          description: 成功時のレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/senarioInfo"
+  /scenario:
+    post:
+      summary: シナリオをULするためのAPI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/senarioInfo"
+
+      responses:
+        "201":
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/senarioId"
+
+  /scenario/{id}/zip:
+    get:
+      summary: データストレージからシナリオZipをDLする
+      parameters:
+        - $ref: "#/components/parameters/senarioId"
+      responses:
+        "200":
+          description: バイナリ化したzipファイルを渡す
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/senarioZip"
+
+    post:
+      summary: シナリオ情報をデータストレージにULする
+      parameters:
+        - $ref: "#/components/parameters/senarioId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/senarioZip"
+      responses:
+        "201":
+          description: created
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  parameters:
+    senarioId:
+      in: path
+      name: id
+      description: シナリオに対してユニークなキー
+      required: true
+      schema:
+        type: string
+
+  schemas:
+    senarioId:
+      description: シナリオに対してユニークなキー
+      type: object
+      properties:
+        senarioId:
+          type: string
+
+    senarioZip:
+      type: object
+      properties:
+        zipBinary:
+          type: string
+          format: binary
+
+    senarioList:
+      type: array
+      items:
+        type: object
+        properties:
+          senarioId:
+            type: string
+          scenarioName:
+            type: string
+          author:
+            type: string
+          description:
+            type: string
+
+    senarioInfo:
+      type: object
+      properties:
+        scenarioName:
+          type: string
+        author:
+          type: string
+        senarioImage:
+          type: string
+          format: binary
+        description:
+          type: string

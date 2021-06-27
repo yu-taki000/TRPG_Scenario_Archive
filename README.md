@@ -21,23 +21,25 @@
 /
 ├─build
 │  ├─front
-│  ├─(back-end)
+│  ├─backend-api
+│  ├─cdk
 │  └─docs
-├─cdk
 ├─docs
 ~
 (略)
 ```
 
-### cdk
-AWSリソースを構築するためのコードを格納する。
-[AWS CDKリファレンス](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html)
 
 ### build
 ビルド・トランスパイルが必要なファイルを配置する。
 
 #### front
 フロントエンドアプリケーションのソースコードを配置する
+
+### cdk
+AWSリソースを構築するためのコードを格納する。
+[AWS CDKリファレンス](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html)
+
 #### back-end
 バックエンドAPI(AWS Lambda)のコードを配置する
 (未作成)
@@ -48,6 +50,3 @@ swaggerなど、git hubsでそのまま表示できないファイルを配置�
 #### (/)docs
 build/docsから生成した静的ページを配置する。
 git hubPagesで公開されている。
-
-
-

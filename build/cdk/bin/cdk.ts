@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
-import { CdkStack } from '../lib/cdk-stack';
-import { ApiRootStack } from '../lib/ApiRootStack';
+import CdkStack from '../lib/cdk-stack';
+import ApiRootStack from '../lib/ApiRootStack';
 
 const app = new cdk.App();
 
@@ -15,4 +15,4 @@ const env = { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_
 // フロント関連のデプロイを行うStack
 new CdkStack(app, CdkStack.name, { env });
 // backEndApi関連をDeployするStack
-new ApiRootStack(app, ApiRootStack.name, { env })
+new ApiRootStack(app, ApiRootStack.name, { env });

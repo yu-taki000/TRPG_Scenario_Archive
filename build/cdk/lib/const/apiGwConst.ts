@@ -8,4 +8,4 @@ export const corsProps: apigw.CorsOptions = {
   allowMethods: apigw.Cors.ALL_METHODS,
   allowCredentials: false,
   disableCache: true, // 確かキャッシュはバグを内包してる(ハズ)
-}
+};

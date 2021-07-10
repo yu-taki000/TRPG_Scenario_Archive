@@ -1,6 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import * as apigw from '@aws-cdk/aws-apigateway';
-import * as apiGwConst from './const/apiGwConst';
+import * as apiGwConst from '../const/apiGwConst';
 
 export default class ApiGWStack extends cdk.NestedStack {
   public ApiGw: apigw.RestApi;

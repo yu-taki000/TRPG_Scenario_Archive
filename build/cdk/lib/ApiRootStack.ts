@@ -13,7 +13,7 @@ export default class ApiRootStack extends cdk.Stack {
 
   private setProperty() {
     this.ApiGWStack = new ApiGWStack(this, ApiGWStack.name);
-    this.StorageStack = new DataStorageStack(this, ApiGWStack.name);
+    this.StorageStack = new DataStorageStack(this, DataStorageStack.name);
   }
 
   constructor(scope: cdk.App, id: string, props: cdk.StackProps) {

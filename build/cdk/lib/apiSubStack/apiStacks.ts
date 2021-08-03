@@ -12,6 +12,7 @@ export default class ApiGWStack extends cdk.NestedStack {
     this.ApiGw = new apigw.RestApi(this, `${ApiGWStack.name}GW`, {
       defaultCorsPreflightOptions: apiGwConst.corsProps,
     });
+    // apiKeyをstageに差し込む処理を追加
     const apiKey = this.ApiGw.addApiKey('defaultKeys');
     this.ApiGw.addUsagePlan(`${ApiGWStack.name}UsagePlan`).addApiKey(apiKey);
   }

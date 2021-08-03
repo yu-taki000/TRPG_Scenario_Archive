@@ -1,15 +1,11 @@
 import * as aws from 'aws-sdk';
 import * as dynamoCdk from '#/lib/const/dynamoConst';
 
-class dynamoClient {
+export class dynamoClient {
   constructor(
     private client: aws.DynamoDB.DocumentClient = new aws.DynamoDB.DocumentClient(),
     private tableName: string = dynamoCdk.senarioInfoProps.tableName) {
   }
-  public put() {
-
-  }
-
   public async getByKey(value: string) {
     const param: aws.DynamoDB.GetItemInput = {
       TableName: this.tableName,
@@ -21,5 +17,10 @@ class dynamoClient {
     console.log(JSON.stringify(ret));
     return ret.Item
   }
+  public async getList() {
+    const ret = await this.client.scan({
+      TableName: this.tableName,
+    }).promise();
+    return ret.Items?.map(item => item) ?? []
+  }
 };
-

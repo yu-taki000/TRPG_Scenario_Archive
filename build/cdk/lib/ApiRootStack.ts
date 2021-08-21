@@ -21,13 +21,14 @@ export default class ApiRootStack extends cdk.Stack {
     this.setProperty();
 
     // defines an AWS Lambda resource
-    // TODO policyにdynamoDBのassumeRoleと権限を追加
     const hello = new node.NodejsFunction(this, 'HelloHandler', {
       runtime: lambda.Runtime.NODEJS_14_X,
       entry: '../backend-api/src/handler/senario/list.ts',
       handler: 'handler',
       bundling: lambdaConst.bundlingOptions,
     });
+    this.StorageStack.SenarioInfo.grantReadWriteData(hello);
+
     const helloIntegration = new apigw.LambdaIntegration(hello);
 
     // defines an API Gateway REST API resource backed by our "hello" function.

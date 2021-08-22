@@ -11,5 +11,9 @@ export const listRepo: types.SenarioRepos = {
     console.log('ret', JSON.stringify(ret));
     return ret;
   },
-  SetItem: (item: any) => { return false }
+  SetItem: async (item: any): Promise<boolean> => {
+    const client = new dynamo.dynamoClient();
+    const ret = await client.setItem(item)
+    return ret;
+  }
 }

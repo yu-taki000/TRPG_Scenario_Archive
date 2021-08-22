@@ -10,10 +10,11 @@ export class senarioListController {
 
   public getList = async (): Promise<controllerType.SenarioItem[]> => await this.senarioTable.GetList();
 
-  public setItem(item: controllerType.SenarioItem) {
+  public setItem = async (item: controllerType.SenarioItem): Promise<boolean> => {
+    if (!controllerType.IsSenarioItem(item)) { throw new Error(`this item is not supported:\r\n ${JSON.stringify(item)}`) }
     const ret = this.senarioTable.SetItem(item);
+    return ret;
   }
-
 }
 
 const controller = new senarioListController();

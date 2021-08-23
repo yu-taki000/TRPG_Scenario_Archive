@@ -8,7 +8,7 @@ import authConfig from '/@/auth/auth_config.json'
 // PrimeVue Block
 import PrimeVue from 'primevue/config';
 import InputText from 'primevue/inputtext';
-import textArea from 'primevue/textarea';
+import Textarea from 'primevue/textarea';
 import FileUpload from 'primevue/fileupload';
 import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
@@ -32,7 +32,7 @@ Auth0Plugin.setupAuth(authConfig, (appState: any) => {
 })
 
 app.component('InputText', InputText)
-  .component('textArea', textArea)
+  .component('Textarea', Textarea)
   .component('FileUpload', FileUpload)
   .component('Button', Button)
   .component('DataTable', DataTable)

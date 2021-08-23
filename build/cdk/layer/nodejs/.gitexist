@@ -1,0 +1,2 @@
+## LayerVersionを作成するようフォルダ
+## backend-apiのpackage.jsonを本フォルダに移動させnpm install --only==prod

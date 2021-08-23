@@ -56,6 +56,10 @@ export default class ApiRootStack extends cdk.Stack {
         bundling: lambdaConst.bundlingOptions,
         layers: [this.layerVersion],
       });
+
+      this.StorageStack.SenarioInfo.grantReadWriteData(lambdaNode);
+      this.StorageStack.SequenceInfo.grantReadWriteData(lambdaNode);
+
       const integration = new apigw.LambdaIntegration(lambdaNode);
       apiResource.addMethod(item.method, integration, {
         apiKeyRequired: true,

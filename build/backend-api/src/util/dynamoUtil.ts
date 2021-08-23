@@ -7,6 +7,7 @@ export class dynamoClient {
     private client: aws.DynamoDB.DocumentClient = new aws.DynamoDB.DocumentClient(),
     private tableName: string = dynamoCdk.senarioInfoProps.tableName) {
   }
+  public getTableName() { return this.tableName; }
   public async getByKey(value: string) {
     const param: aws.DynamoDB.GetItemInput = {
       TableName: this.tableName,

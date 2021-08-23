@@ -3,6 +3,10 @@ import * as dynamo from '@/util/dynamoUtil'
 import * as controllertypes from '@/controller/types'
 
 export const listRepo: types.SenarioRepos = {
+  tableName: () => {
+    const client = new dynamo.dynamoClient();
+    return client.getTableName();
+  },
   GetList: async () => {
     const client = new dynamo.dynamoClient()
     const queryResult = await client.getList();

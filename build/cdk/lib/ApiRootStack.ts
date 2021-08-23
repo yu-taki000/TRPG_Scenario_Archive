@@ -6,35 +6,76 @@ import * as lambdaConst from './const/lambdaConst';
 import ApiGWStack from './apiSubStack/apiStacks';
 import DataStorageStack from './apiSubStack/DataStorageStack';
 
+interface ApiResource{
+  id:string
+  entry:string
+  method:'GET' | 'POST'
+}
+interface ApiInfo {
+  apiPath:string,
+  resources?:ApiResource[],
+  subItem?:ApiInfo[]
+}
 export default class ApiRootStack extends cdk.Stack {
   public StorageStack:DataStorageStack;
 
   public ApiGWStack:ApiGWStack;
+
+  private layerVersion:lambda.LayerVersion;
 
   private setProperty() {
     this.ApiGWStack = new ApiGWStack(this, ApiGWStack.name);
     this.StorageStack = new DataStorageStack(this, DataStorageStack.name);
   }
 
+  private readonly props:ApiInfo = {
+    apiPath: 'scenario',
+    resources: [{
+      id: 'senarioPost',
+      entry: '../backend-api/src/handler/senario/post.ts',
+      method: 'POST',
+    }],
+    subItem: [{
+      apiPath: 'list',
+      resources: [{
+        id: 'senarioList',
+        entry: '../backend-api/src/handler/senario/list.ts',
+        method: 'GET',
+      }],
+    }],
+  };
+
+  private createApi(apiRoot:apigw.IResource, props:ApiInfo) {
+    const apiResource = apiRoot.addResource(props.apiPath);
+
+    props.resources?.forEach((item) => {
+      const lambdaNode = new node.NodejsFunction(this, item.id, {
+        runtime: lambda.Runtime.NODEJS_14_X,
+        entry: item.entry,
+        handler: 'handler',
+        bundling: lambdaConst.bundlingOptions,
+        layers: [this.layerVersion],
+      });
+      const integration = new apigw.LambdaIntegration(lambdaNode);
+      apiResource.addMethod(item.method, integration, {
+        apiKeyRequired: true,
+      });
+    });
+  }
+
+  private createLayerVersion() {
+    this.layerVersion = new lambda.LayerVersion(this, 'layer', {
+      compatibleRuntimes: [
+        lambda.Runtime.NODEJS_14_X,
+      ],
+      code: lambda.Code.fromAsset('./layer/nodejs'),
+    });
+  }
+
   constructor(scope: cdk.App, id: string, props: cdk.StackProps) {
     super(scope, id, props);
     this.setProperty();
-
-    // defines an AWS Lambda resource
-    const hello = new node.NodejsFunction(this, 'HelloHandler', {
-      runtime: lambda.Runtime.NODEJS_14_X,
-      entry: '../backend-api/src/handler/senario/list.ts',
-      handler: 'handler',
-      bundling: lambdaConst.bundlingOptions,
-    });
-    this.StorageStack.SenarioInfo.grantReadWriteData(hello);
-
-    const helloIntegration = new apigw.LambdaIntegration(hello);
-
-    // defines an API Gateway REST API resource backed by our "hello" function.
-    const senarioRoot = this.ApiGWStack.ApiGw.root.addResource('senario');
-    senarioRoot.addMethod('GET', helloIntegration, {
-      apiKeyRequired: true,
-    });
+    this.createLayerVersion();
+    this.createApi(this.ApiGWStack.ApiGw.root, this.props);
   }
 }
